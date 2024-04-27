@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class Account_Model extends Model
 {
-    protected $table = "tbl_accounts";
+    protected $table = "tbl_ojttrackerandmanagementsystem_accounts";
     protected $primary_key = "id";
     protected $allowedFields = [
         'created_at',

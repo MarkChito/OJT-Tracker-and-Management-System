@@ -26,12 +26,29 @@
             sweet_alert(notification);
         }
 
+        if (!isMobileOrTablet()) {
+            location.href = base_url + "browser_error";
+        }
+
         function sweet_alert(notification) {
             Swal.fire({
                 title: notification.title,
                 text: notification.text,
                 icon: notification.icon
             });
+        }
+
+        function isMobileOrTablet() {
+            var mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+            var tabletRegex = /Tablet|iPad/i;
+
+            var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+            if (mobileRegex.test(navigator.userAgent) || (tabletRegex.test(navigator.userAgent) && screenWidth < 1025)) {
+                return true;
+            } else {
+                return false;
+            }
         }
     })
 </script>

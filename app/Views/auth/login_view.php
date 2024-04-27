@@ -160,9 +160,9 @@
                 alert_message(notification);
             }
 
-            // if (!isMobileOrTablet()) {
-            //     location.href = base_url + "browser_error";
-            // }
+            if (!isMobileOrTablet()) {
+                location.href = base_url + "browser_error";
+            }
 
             $("#login_show_password").change(function() {
                 var passwordField = $("#login_password");

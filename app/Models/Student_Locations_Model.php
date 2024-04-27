@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class Student_Locations_Model extends Model
 {
-    protected $table = "tbl_student_locations";
+    protected $table = "tbl_ojttrackerandmanagementsystem_studentlocations";
     protected $primary_key = "id";
     protected $allowedFields = [
         'created_at',
