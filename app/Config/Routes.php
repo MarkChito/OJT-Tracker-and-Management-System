@@ -14,8 +14,12 @@ $routes->get('/student/attendance', 'Student::index');
 
 // API
 $routes->get('/check_connection', 'API::check_connection');
-// API
 $routes->post('/register', 'API::register');
+$routes->post('/student/login', 'API::student_login');
+$routes->post('/update_student_location', 'API::update_student_location');
 
 // Errors
 $routes->get('/browser_error', 'Errors::index');
+
+// Logout
+$routes->get('/logout', 'API::logout');

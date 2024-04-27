@@ -228,7 +228,7 @@
                     formData.append('password', password);
 
                     $.ajax({
-                        url: base_url + '/register',
+                        url: base_url + 'register',
                         data: formData,
                         type: 'POST',
                         dataType: 'JSON',
@@ -299,7 +299,7 @@
                 formData.append('student_login', true);
 
                 $.ajax({
-                    url: 'server.php',
+                    url: base_url + 'student/login',
                     data: formData,
                     type: 'POST',
                     dataType: 'JSON',
@@ -307,7 +307,7 @@
                     contentType: false,
                     success: function(response) {
                         if (response) {
-                            location.href = base_url + "dashboard";
+                            location.href = base_url + "student/attendance?user_id=" + response.user_id;
                         } else {
                             location.href = base_url;
                         }
@@ -316,6 +316,26 @@
                         console.error(error);
                     }
                 });
+            })
+
+            $('#login_student_number').on('input', function() {
+                var value = $(this).val();
+
+                if (value.length === 2) {
+                    value = value.substring(0, 2) + "-" + value.substring(2);
+
+                    $(this).val(value);
+                }
+            })
+            
+            $('#register_student_number').on('input', function() {
+                var value = $(this).val();
+
+                if (value.length === 2) {
+                    value = value.substring(0, 2) + "-" + value.substring(2);
+
+                    $(this).val(value);
+                }
             })
 
             function error_student_number(inputString) {
