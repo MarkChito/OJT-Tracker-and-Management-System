@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="<?= base_url() ?>public/css/adminlte.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>public/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>public/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>public/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>public/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>public/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -64,24 +67,35 @@
 
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-item">
-                            <a href="<?= base_url() ?>student/attendance?<?= $_SERVER['QUERY_STRING'] ?>" class="nav-link <?= $current_tab == "attendance" ? "active" : null ?>">
-                                <i class="nav-icon fas fa-calendar-alt"></i>
-                                <p>Attendance</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url() ?>student/attendance_records?<?= $_SERVER['QUERY_STRING'] ?>" class="nav-link">
-                                <i class="nav-icon fas fa-list-alt"></i>
-                                <p>View Records</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url() ?>student/profile?<?= $_SERVER['QUERY_STRING'] ?>" class="nav-link">
+                        <?php if ($user_type == "student") : ?>
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>student/attendance?<?= $_SERVER['QUERY_STRING'] ?>" class="nav-link <?= $current_tab == "Attendance" ? "active" : null ?>">
+                                    <i class="nav-icon fas fa-calendar-alt"></i>
+                                    <p>Attendance</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>student/attendance_records?<?= $_SERVER['QUERY_STRING'] ?>" class="nav-link <?= $current_tab == "Attendance Records" ? "active" : null ?>">
+                                    <i class="nav-icon fas fa-list-alt"></i>
+                                    <p>View Records</p>
+                                </a>
+                            </li>
+                            <!-- <li class="nav-item">
+                            <a href="<?= base_url() ?>student/profile?<?= $_SERVER['QUERY_STRING'] ?>" class="nav-link <?= $current_tab == "My Profile" ? "active" : null ?>">
                                 <i class="nav-icon fas fa-user-alt"></i>
                                 <p>Manage Profile</p>
                             </a>
-                        </li>
+                        </li> -->
+                        <?php endif ?>
+
+                        <?php if ($user_type == "admin") : ?>
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>admin/records?<?= $_SERVER['QUERY_STRING'] ?>" class="nav-link <?= $current_tab == "Records" ? "active" : null ?>">
+                                    <i class="nav-icon fas fa-list-alt"></i>
+                                    <p>Records</p>
+                                </a>
+                            </li>
+                        <?php endif ?>
                         <li class="nav-item">
                             <a href="<?= base_url() ?>logout" class="nav-link">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>

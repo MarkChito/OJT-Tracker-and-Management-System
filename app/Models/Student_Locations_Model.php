@@ -14,7 +14,5 @@ class Student_Locations_Model extends Model
         'account_id',
         'latitude',
         'longitude',
-        'middle_name',
-        'is_login',
     ];
 }
